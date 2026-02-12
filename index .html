@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Ti 🌙</title>
+
+<style>
+
+body{
+  margin:0;
+  height:100vh;
+  background:black;
+  overflow:hidden;
+  font-family: Arial, sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+}
+
+/* Estrellas */
+.star{
+  position:absolute;
+  background:white;
+  border-radius:50%;
+  opacity:0.8;
+  animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+  from{opacity:0.3;}
+  to{opacity:1;}
+}
+
+/* Caja principal */
+.card{
+  position:relative;
+  z-index:10;
+  background:rgba(0,0,0,0.7);
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  max-width:90%;
+  box-shadow:0 0 20px white;
+}
+
+h1{
+  margin-bottom:15px;
+}
+
+#mensaje{
+  min-height:120px;
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
+/* Botones */
+.buttons{
+  position:relative;
+  height:60px;
+}
+
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:20px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+#si{
+  background:#00ff99;
+}
+
+#no{
+  background:#ff4d4d;
+  position:absolute;
+}
+
+#si:hover{
+  background:#00cc7a;
+}
+
+#no:hover{
+  background:#ff1a1a;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Lo siento... 💫</h1>
+
+<div id="mensaje"></div>
+
+<div class="buttons">
+  <button id="si" onclick="perdonado()">Sí </button>
+  <button id="no" onclick="moverNo()">No </button>
+</div>
+
+</div>
+
+<script>
+
+/* TEXTO (EDITA AQUÍ) */
+const texto = `
+holaa mi ale como estas, seguramente estes muy molesta conmigo y quiero decirte algo, :(. estoy bastante confundido
+porque tu no me quieres ver hablando con heidi, yo te entiendo te cae delo peor ella, y si ella me pidio 
+mi roblox, y yo accedi porque? Porque he visto como casi nadie la quiere en el aula. 
+y creeme es horrible ser el rechazado yo lo fui por mucho tiempo. nadie me queria desde que estoy 
+en ese colegio siempre fui el rechazado el que todos se burlaban siempre pasaba triste, nadie queria hacer equipo conmigo,
+siempre estaba solo, comia solo, en recreo la pasaba solo, ella esta pasando lo mismo. y tu me conoces bien 
+yo siempre ayudo a los demas en sus peores momentos porque cuando yo estuve en esos momentos nadie me ayudo,
+ella me ahablado un poco de su vida y si es triste y no me gustaria hacer sentir mal a alguien que pasa por eso
+. NO estoy justificando solo para hablar con ella ni nada. pero la manera como te comportas me hace sentirme mal
+ya que, tu tienes a tu pareja, tu tienes a alguien con quien compartir alguien quien te ama 
+en cambio yo no no cuento con alguien para hablar, me siento solo aunque no lo este, 
+
+esto lo hago para que veas la realidad, y si te hize sentir mal te pido mis sinceras disculpas 
+no me gusta que te sientas mal no te preocupes ella no se metera en tu vida porque tu vida 
+solo estas tu y tu novio tu familia se por lo que as pasado, creeme no te dejare sola 
+aunque te olvdes de mi yo siempre te preferire a ti, no me culpes porque sea mi compañera,
+no me culpes porque ella solo quiera sentirse aceptada, tu me conoces y sabes lo simpatico que soy
+porque todo ese infierno lo vivi, lo sigo viviendo. pero te prometo que nunca te dejare sola
+
+pero te pido con mi corazon con mi alma mi mente que estes tranquila y no sigas enojandote por cosas que suceden
+
+te quiero mucho mi negra. por favor no siga confundiendome mas porque me estoy enamorandome de ti 
+no te lo miento pero tu tienes novio asi que solo amigos
+
+Desde mi corazón quiero decirte
+que lo siento mucho. espero que me entiendas 
+
+ME PERDONAS??????
+`;
+
+/* Máquina de escribir */
+let i=0;
+
+function escribir(){
+  if(i<texto.length){
+    document.getElementById("mensaje").innerHTML += texto.charAt(i);
+    i++;
+    setTimeout(escribir,40);
+  }
+}
+
+escribir();
+
+/* Estrellas */
+function crearEstrella(){
+
+  const star=document.createElement("div");
+  star.classList.add("star");
+
+  const size=Math.random()*2+1;
+  star.style.width=size+"px";
+  star.style.height=size+"px";
+
+  star.style.left=Math.random()*100+"vw";
+  star.style.top=Math.random()*100+"vh";
+
+  star.style.animationDuration=(1+Math.random()*3)+"s";
+
+  document.body.appendChild(star);
+
+}
+
+for(let i=0;i<200;i++){
+  crearEstrella();
+}
+
+/* Botón NO se mueve */
+function moverNo(){
+
+  const no=document.getElementById("no");
+
+  const x=Math.random()*200 -100;
+  const y=Math.random()*80 -40;
+
+  no.style.transform=`translate(${x}px,${y}px)`;
+
+}
+
+/* Botón SI */
+function perdonado(){
+
+  document.body.innerHTML=`
+  <div style="
+    color:white;
+    text-align:center;
+    font-size:22px;
+    padding:40px;
+  ">
+     Gracias te quiero mucho mucho mucho de verdad <br><br>
+    Prometo ser mejor
+  </div>
+  `;
+
+}
+
+</script>
+
+</body>
+</html>
